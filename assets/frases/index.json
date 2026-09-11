@@ -1,0 +1,102 @@
+[
+  {
+    "id": "amor",
+    "name": "Love · Amor",
+    "emoji": "❤️",
+    "gradient": [
+      "#667EEA",
+      "#764BA2"
+    ],
+    "premium": false
+  },
+  {
+    "id": "curtas",
+    "name": "Short · Curtas",
+    "emoji": "✂️",
+    "gradient": [
+      "#4776E6",
+      "#8E54E9"
+    ],
+    "premium": false
+  },
+  {
+    "id": "motivacao",
+    "name": "Motivation · Motivação",
+    "emoji": "🚀",
+    "gradient": [
+      "#396afc",
+      "#2948ff"
+    ],
+    "premium": false
+  },
+  {
+    "id": "sucesso",
+    "name": "Success · Sucesso",
+    "emoji": "🏆",
+    "gradient": [
+      "#5B247A",
+      "#1BCEDF"
+    ],
+    "premium": false
+  },
+  {
+    "id": "atitude",
+    "name": "Attitude · Atitude",
+    "emoji": "😎",
+    "gradient": [
+      "#41295a",
+      "#2F0743"
+    ],
+    "premium": false
+  },
+  {
+    "id": "vida",
+    "name": "Life · Vida",
+    "emoji": "🌎",
+    "gradient": [
+      "#2193b0",
+      "#6dd5ed"
+    ],
+    "premium": false
+  },
+  {
+    "id": "superacao",
+    "name": "Strength · Superação",
+    "emoji": "💪",
+    "gradient": [
+      "#7F00FF",
+      "#E100FF"
+    ],
+    "premium": false
+  },
+  {
+    "id": "tristes",
+    "name": "Sad · Tristes",
+    "emoji": "💔",
+    "gradient": [
+      "#141E30",
+      "#243B55"
+    ],
+    "premium": false
+  },
+  {
+    "id": "status",
+    "name": "Status",
+    "emoji": "💬",
+    "gradient": [
+      "#4568DC",
+      "#B06AB3"
+    ],
+    "premium": false
+  },
+  {
+    "id": "sabedoria",
+    "name": "Wisdom · Sabedoria",
+    "emoji": "🧠",
+    "gradient": [
+      "#360033",
+      "#0b8793"
+    ],
+    "premium": false
+  }
+]
