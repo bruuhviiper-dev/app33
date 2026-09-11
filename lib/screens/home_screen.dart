@@ -211,7 +211,7 @@ class _MessageOfDayState extends State<_MessageOfDay> {
 
   // Frase do dia (mesma lógica da notificação) + estilo dinâmico por sessão.
   // "Surpreenda-me" sorteia uma nova frase bonita e um novo estilo de cartão.
-  Verse _msg = Verse(VerseData.ofDay());
+  Verse _msg = VerseData.verseOfDay();
   List<Color> _gradient =
       StoryBg.all[Random().nextInt(StoryBg.all.length)].colors;
 

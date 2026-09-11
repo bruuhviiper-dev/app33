@@ -82,6 +82,16 @@ class VerseData {
     return list[(dayIndex.abs() * 7919) % list.length].text;
   }
 
+  /// Verse do dia COMPLETO (inglês + tradução), em sincronia com [ofDay].
+  static Verse verseOfDay([DateTime? date]) {
+    final list = freeVerses.isNotEmpty ? freeVerses : all;
+    if (list.isEmpty) return Verse(ofDay(date));
+    final d = date ?? DateTime.now();
+    final dayIndex =
+        DateTime(d.year, d.month, d.day).difference(DateTime(2020, 1, 1)).inDays;
+    return list[(dayIndex.abs() * 7919) % list.length];
+  }
+
   static VerseCategory categoryById(String id) => _categories.firstWhere(
         (c) => c.id == id,
         orElse: () => _categories.isNotEmpty

@@ -55,21 +55,52 @@ class VerseImageCard extends StatelessWidget {
                   fit: BoxFit.scaleDown,
                   child: ConstrainedBox(
                     constraints: const BoxConstraints(maxWidth: 320),
-                    child: Text(
-                      verse.text,
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.lora(
-                        color: Colors.white,
-                        fontSize: fontSize,
-                        height: 1.5,
-                        fontWeight: FontWeight.w600,
-                        shadows: const [
-                          Shadow(
-                              color: Colors.black38,
-                              blurRadius: 10,
-                              offset: Offset(0, 2)),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          verse.text,
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.lora(
+                            color: Colors.white,
+                            fontSize: fontSize,
+                            height: 1.5,
+                            fontWeight: FontWeight.w600,
+                            shadows: const [
+                              Shadow(
+                                  color: Colors.black38,
+                                  blurRadius: 10,
+                                  offset: Offset(0, 2)),
+                            ],
+                          ),
+                        ),
+                        if (verse.reference.trim().isNotEmpty) ...[
+                          const SizedBox(height: 12),
+                          Container(
+                            width: 40,
+                            height: 1.5,
+                            color: Colors.white.withValues(alpha: 0.45),
+                          ),
+                          const SizedBox(height: 12),
+                          Text(
+                            verse.reference,
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.lora(
+                              color: Colors.white.withValues(alpha: 0.92),
+                              fontSize: fontSize * 0.66,
+                              height: 1.4,
+                              fontStyle: FontStyle.italic,
+                              fontWeight: FontWeight.w500,
+                              shadows: const [
+                                Shadow(
+                                    color: Colors.black38,
+                                    blurRadius: 8,
+                                    offset: Offset(0, 1)),
+                              ],
+                            ),
+                          ),
                         ],
-                      ),
+                      ],
                     ),
                   ),
                 ),

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import '../data/greeting_generator.dart';
 import '../data/models.dart';
+import '../data/verses.dart';
 import '../services/app_state.dart';
 import '../widgets/share_helper.dart';
 import 'create_screen.dart';
@@ -17,7 +17,8 @@ class MessagesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<AppState>();
-    final itemCount = GreetingGenerator.total;
+    final verses = VerseData.all;
+    final itemCount = verses.length;
 
     return Scaffold(
       appBar: AppBar(title: const Text('Frases em Inglês')),
@@ -25,10 +26,9 @@ class MessagesScreen extends StatelessWidget {
         padding: EdgeInsets.fromLTRB(16, 12, 16, 24 + MediaQuery.of(context).padding.bottom),
         itemCount: itemCount,
         itemBuilder: (context, i) {
-          final msgIndex = i;
-          final text = GreetingGenerator.byIndex(msgIndex);
+          final verse = verses[i];
+          final text = verse.text;
           final share = '$text\n\n🕊 Frases em Inglês';
-          final verse = Verse(text);
           final fav = state.isFavorite(verse.id);
           return Card(
             margin: const EdgeInsets.only(bottom: 12),
@@ -38,6 +38,18 @@ class MessagesScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(text, style: GoogleFonts.lora(fontSize: 16, height: 1.5)),
+                  if (verse.reference.trim().isNotEmpty)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 4),
+                      child: Text('🇧🇷 ${verse.reference}',
+                          style: GoogleFonts.lora(
+                              fontSize: 13.5,
+                              height: 1.4,
+                              fontStyle: FontStyle.italic,
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onSurfaceVariant)),
+                    ),
                   Row(
                     children: [
                       const Spacer(),
