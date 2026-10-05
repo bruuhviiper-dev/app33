@@ -3,10 +3,8 @@ import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:timezone/data/latest_all.dart' as tzdata;
 import 'package:timezone/timezone.dart' as tz;
 
-import '../data/verses.dart';
-
-/// Notificação diária (frase no horário escolhido). Ao TOCAR, abre
-/// exatamente a mensagem da notificação (mesmo com o app fechado).
+/// Notificação diária GENÉRICA (não revela a frase). Ao TOCAR, apenas abre o
+/// app para o usuário ver a frase do dia.
 class NotificationService {
   NotificationService._();
   static final NotificationService instance = NotificationService._();
@@ -60,29 +58,26 @@ class NotificationService {
   Future<void> scheduleDaily(int hour, int minute) async {
     await init();
     await _plugin.cancel(_dailyId);
-    // Mesma fonte do card do topo (VerseData.ofDay): a notificação e a "frase do
-    // dia" na home ficam sempre em sincronia (mesma frase, mesma base de dados).
-    final body = VerseData.ofDay();
+    // GENÉRICA: não revela a frase. Ao tocar, abre o app (payload vazio).
     await _plugin.zonedSchedule(
       _dailyId,
       'Frases em Inglês 🕊',
-      body,
+      'Toque para ver a frase em inglês de hoje 🇺🇸',
       _nextInstance(hour, minute),
-      NotificationDetails(
+      const NotificationDetails(
         android: AndroidNotificationDetails(
           'daily_frase',
           'Frase do dia',
-          channelDescription: 'A sua frase do dia',
+          channelDescription: 'Um lembrete diário para abrir o app',
           importance: Importance.high,
           priority: Priority.high,
-          styleInformation: BigTextStyleInformation(body),
         ),
       ),
       androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
       uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: DateTimeComponents.time,
-      payload: body,
+      payload: '',
     );
   }
 
