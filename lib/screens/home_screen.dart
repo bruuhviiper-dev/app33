@@ -28,20 +28,11 @@ class HomeScreen extends StatelessWidget {
         titleSpacing: 12,
         actions: [
           if (!state.adsRemoved)
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 2),
-              child: FilledButton.icon(
-                onPressed: () => Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_) => const StoreScreen()),
-                ),
-                icon: const Icon(Icons.block_rounded, size: 16),
-                label: const Text('Remover anúncio'),
-                style: FilledButton.styleFrom(
-                  visualDensity: VisualDensity.compact,
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  textStyle: const TextStyle(
-                      fontSize: 12.5, fontWeight: FontWeight.w800),
-                ),
+            IconButton(
+              tooltip: 'Remover anúncios',
+              icon: const Icon(Icons.block_rounded),
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const StoreScreen()),
               ),
             ),
           IconButton(
